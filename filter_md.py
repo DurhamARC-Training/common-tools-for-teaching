@@ -72,7 +72,7 @@ def remove_section(input_file, output_file, section_type="skip"):
                 stripped_line = line.strip()
 
                 # Set the comment flag if the line starts with '#' or "```"
-                if stripped_line.startswith('#') or stripped_line.startswith('```') or stripped_line.startswith('<!--'):
+                if stripped_line.startswith('```') or stripped_line.startswith('<!--'):
                     is_comment = True
             
             # Detect end of section block
