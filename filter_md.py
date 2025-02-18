@@ -102,6 +102,6 @@ if __name__ == "__main__":
     output_md = sys.argv[2]
 
     remove_solutions(input_md, output_md)
-    remove_section(input_md, output_md, section_type="skip")
-    remove_section(input_md, output_md, section_type="notes")
+    remove_section(output_md, output_md, section_type="skip")
+    remove_section(output_md, output_md, section_type="notes")
     
