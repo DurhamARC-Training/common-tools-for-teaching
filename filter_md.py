@@ -90,7 +90,7 @@ def remove_section(input_file, output_file, section_type="skip"):
         f_out.writelines(lines_to_keep)
 
     # Print the file we created/modified
-    print(f"# Created/Modified files after removing {section_type}s:\n{output_file}")
+    print(f"# Created/Modified files after removing {section_type} section:\n{output_file}")
     
     
 if __name__ == "__main__":
