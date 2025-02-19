@@ -58,7 +58,6 @@ def remove_section(input_file, output_file, section_type="skip"):
     end_marker = '<!-- #endregion -->'
     
     in_block = False
-    is_comment = False
     lines_to_keep = []
 
     with open(input_file, 'r', encoding='utf-8') as f_in:
@@ -67,14 +66,6 @@ def remove_section(input_file, output_file, section_type="skip"):
             if start_marker in line:
                 in_block = True
 
-            if in_block:
-                # Remove leading and trailing whitespace
-                stripped_line = line.strip()
-
-                # Set the comment flag if the line starts with '#' or "```"
-                if stripped_line.startswith('```') or stripped_line.startswith('<!--'):
-                    is_comment = True
-            
             # If not in section block, keep the line
             if not in_block:
                 lines_to_keep.append(line)
@@ -82,9 +73,6 @@ def remove_section(input_file, output_file, section_type="skip"):
             # Detect end of section block
             if end_marker in line:
                 in_block = False
-
-            # Reset the comment flag after each line
-            is_comment = False
 
     with open(output_file, 'w', encoding='utf-8') as f_out:
         f_out.writelines(lines_to_keep)
