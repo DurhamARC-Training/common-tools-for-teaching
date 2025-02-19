@@ -75,13 +75,13 @@ def remove_section(input_file, output_file, section_type="skip"):
                 if stripped_line.startswith('```') or stripped_line.startswith('<!--'):
                     is_comment = True
             
+            # If not in section block, keep the line
+            if not in_block:
+                lines_to_keep.append(line)
+
             # Detect end of section block
             if end_marker in line:
                 in_block = False
-
-            # If not in section block, keep the line
-            if not in_block or (in_block and is_comment):
-                lines_to_keep.append(line)
 
             # Reset the comment flag after each line
             is_comment = False
