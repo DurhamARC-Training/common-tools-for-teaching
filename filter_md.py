@@ -92,5 +92,5 @@ if __name__ == "__main__":
     remove_solutions(input_md, output_md)
     remove_section(output_md, output_md, section_type="skip")
     remove_section(output_md, output_md, section_type="notes")
-    remove_section(output_md, output_md, section_type="fragment")
+#    remove_section(output_md, output_md, section_type="fragment")
     
