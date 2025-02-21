@@ -54,7 +54,7 @@ def remove_section(input_file, output_file, section_type="skip"):
         output_file (str): Path to output file
         section_type (str): Type of section to remove ("skip" or "notes")
     """
-    start_marker = f'<!-- #region slideshow={{"slide_type": "{section_type}"}} -->'
+    start_marker = f'slideshow={{"slide_type": "{section_type}"}} -->'
     end_marker = '<!-- #endregion -->'
     
     in_block = False
