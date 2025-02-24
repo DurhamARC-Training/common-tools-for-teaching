@@ -11,7 +11,7 @@ def remove_solutions(input_file, output_file,
                      start_marker="<!-- #solution -->",
                      end_marker="<!-- #endsolution -->"):
     in_block = False
-    is_comment = False
+    is_comment_or_blank = False
     lines_to_keep = []
 
     with open(input_file, 'r', encoding='utf-8') as f_in:
@@ -25,19 +25,19 @@ def remove_solutions(input_file, output_file,
                 stripped_line = line.strip()
 
                 # Set the comment flag if the line starts with '#' or "```"
-                if stripped_line.startswith('#') or stripped_line.startswith('```') or stripped_line.startswith('<!--'):
-                    is_comment = True
+                if stripped_line.startswith('#') or stripped_line.startswith('```') or stripped_line.startswith('<!--') or stripped_line=='':
+                    is_comment_or_blank = True
             
             # Detect end of solution block
             if end_marker in line:
                 in_block = False
 
             # If not in solution block, keep the line
-            if not in_block or (in_block and is_comment):
+            if not in_block or (in_block and is_comment_or_blank):
                 lines_to_keep.append(line)
 
             # Reset the comment flag after each line
-            is_comment = False
+            is_comment_or_blank = False
 
     with open(output_file, 'w', encoding='utf-8') as f_out:
         f_out.writelines(lines_to_keep)
