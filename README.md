@@ -75,7 +75,7 @@ For a new teaching repository:
 
 3. Install the pre-commit hook:
    ```bash
-   python common-tools/setup_precommit_hook.py
+   python common-tools/precommit_setup.py
    ```
 
 4. Create your directory structure:
