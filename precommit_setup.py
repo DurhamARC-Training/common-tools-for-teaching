@@ -55,6 +55,7 @@ def setup_precommit_hook(source_path, target_path, verbose=False, additional_arg
     
     # Paths
     submodule_dir = Path(repo_root) / "common-tools"
+    submodule_dir = submodule_dir if submodule_dir.exists() else Path(repo_root) / "common"
     hooks_dir = Path(repo_root) / ".git" / "hooks"
     template_path = submodule_dir / "pre-commit-template.sh"
     hook_path = hooks_dir / "pre-commit"
