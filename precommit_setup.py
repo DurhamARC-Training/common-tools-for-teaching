@@ -54,14 +54,15 @@ def setup_precommit_hook(source_path, target_path, verbose=False, additional_arg
         return False
     
     # Paths
-    submodule_dir = Path(repo_root) / "common-tools"
-    submodule_dir = submodule_dir if submodule_dir.exists() else Path(repo_root) / "common"
-    hooks_dir = Path(repo_root) / ".git" / "hooks"
-    template_path = submodule_dir / "pre-commit-template.sh"
+    repo_root = Path(repo_root)
+    submodule_dir = "common"
+    submodule_dir = submodule_dir if (repo_root / submodule_dir).exists() else "common-tools"
+    hooks_dir = repo_root / ".git" / "hooks"
+    template_path = repo_root / submodule_dir / "pre-commit-template.sh"
     hook_path = hooks_dir / "pre-commit"
     
     # Verify the submodule exists
-    if not submodule_dir.exists():
+    if not (repo_root / submodule_dir).exists():
         print(f"Error: Submodule directory '{submodule_dir}' not found.")
         print("Make sure you have added the common-tools submodule to your repository.")
         return False
@@ -86,6 +87,7 @@ def setup_precommit_hook(source_path, target_path, verbose=False, additional_arg
     hook_content = hook_content.replace("__TARGET_PATH__", target_path)
     hook_content = hook_content.replace("__VERBOSE__", verbose_flag)
     hook_content = hook_content.replace("__ADDITIONAL_ARGS__", additional_args)
+    hook_content = hook_content.replace("__COMMON_TOOLS_DIR__", submodule_dir)
     
     # Write the configured hook
     with open(hook_path, 'w') as f:

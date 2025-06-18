@@ -9,9 +9,10 @@ SOURCE_PATH="__SOURCE_PATH__"
 TARGET_PATH="__TARGET_PATH__"
 VERBOSE="__VERBOSE__"
 ADDITIONAL_ARGS="__ADDITIONAL_ARGS__"
+COMMON_TOOLS_DIR="__COMMON_TOOLS_DIR__"
 
 # Path to the submodule script
-SCRIPT_PATH="$(git rev-parse --show-toplevel)/common-tools/generate_student_version.py"
+SCRIPT_PATH="$(git rev-parse --show-toplevel)/$COMMON_TOOLS_DIR/generate_student_version.py"
 
 # Exit if source path doesn't exist
 if [ ! -e "$SOURCE_PATH" ]; then
