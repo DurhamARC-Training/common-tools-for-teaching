@@ -2,7 +2,7 @@
 
 This repository contains scripts for maintaining teaching materials for our python courses, particularly for converting instructor Jupyter notebooks into student versions. The main script `generate_student_version.py` processes notebooks by removing outputs, cleaning metadata, and selectively removing code based on cell metadata.
 
-This ensures that we only need to edit one version of the course (called `source` here), which contains the completed code and the speaker notes. The work version (called `target` here), we and the participants fill during the courses are automatically generated (and should never be edited manually).
+This ensures that we only need to edit one version of the course (called `source` here), which contains the completed code and the speaker notes. The work version (called `target` here), which we and the participants fill during the courses, is automatically generated (and should never be edited manually).
 
 ## Setup for Existing Repositories
 
@@ -119,7 +119,7 @@ The `generate_student_version.py` script processes notebooks by:
 5. Modifying code cells with "remove_code" metadata according to specified rules
 
 ## Manual Triggering
-This should mainly be used for debugging, the pre-commit hook should be preferred.
+This should mainly be used for debugging; the pre-commit hook should be preferred.
 
 ```bash
 # Process a single notebook:
