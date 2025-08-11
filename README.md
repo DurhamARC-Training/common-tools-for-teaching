@@ -11,9 +11,6 @@ If you're working with a repository that already uses these tools:
 ```bash
 # Initialize and update the submodule
 git submodule init
-git submodule update
-
-# Or pull with submodules in one command
 git pull --recurse-submodules
 
 # Install the pre-commit hook
