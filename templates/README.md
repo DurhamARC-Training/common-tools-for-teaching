@@ -10,7 +10,13 @@ Welcome to the <COURSE NAME> repository! This repository contains all the materi
 
 ## Organization
 
-{{ORGANIZATION_SECTION}}
+The repository is organized as follows:
+
+- `<TARGET>`: This file/folder contains the course material we will be using during the course
+
+- `<SOURCE>`: This file/folder contains the completed course material, the solutions to the exercises and the speaker notes. It is meant for reference purposes for teaching the course and as a fallback if something is missing from the notes students made during teaching.
+
+<ADDITIONAL ORGANISATION?>
 
 ## Accessing the Materials
 
