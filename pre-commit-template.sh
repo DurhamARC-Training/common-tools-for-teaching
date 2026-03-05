@@ -36,11 +36,21 @@ fi
 
 # Function to run the script and check for errors
 run_script() {
+    # check if python is available
+    if command -v python &> /dev/null; then
+        PYTHON_CMD="python"
+    elif command -v python3 &> /dev/null; then
+        PYTHON_CMD="python3"
+    else
+        echo "Error: Python is not installed or not in PATH!"
+        exit 1
+    fi
+
     # Create a temporary file for output
     temp_output=$(mktemp)
     
     # Run the script and capture both stdout and stderr
-    python "$SCRIPT_PATH" --source "$1" --target "$2" $VERBOSE $ADDITIONAL_ARGS 2>&1 | tee "$temp_output"
+    $PYTHON_CMD "$SCRIPT_PATH" --source "$1" --target "$2" $VERBOSE $ADDITIONAL_ARGS 2>&1 | tee "$temp_output"
     
     # Check if the output contains ERROR messages
     if grep -q "ERROR:" "$temp_output"; then
